@@ -1,0 +1,30 @@
+
+/* -------------------
+EJERCICIOS CLASE 1
+------------------- */
+    .Clase1{
+        width: 50%;
+        margin: 70px auto;
+        background-color: #E5E0E0;
+        box-shadow: 3 3 3 #d3d2d2;
+        border-radius: 20px;
+        height: 200px;
+    }
+
+
+    .Clase1 h1{
+        font-size: 40px;
+        text-align: center;
+        font-family: "Roboto" , "Ubuntu";
+        color: cornflowerblue;
+        height: 600;
+        padding: 30px;
+    }
+
+    .Clase1 p{
+        font-size: 30px;
+        font-family: "Roboto" , "Ubuntu";
+        text-align: center;
+    }
+
+
