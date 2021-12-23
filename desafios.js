@@ -161,57 +161,73 @@
 //   }
 // }
 
-// ------------------ ETAPA DE INGRESO ------------------
-// FUNCIONES RELACIONADAS A PROYECTO CANINO
+// ------------------ SERVICE CANINO ------------------
 
-// class mascotas {
-//   constructor (nombre, raza, peso, edad){
-//     this.nombre = nombre
-//     this.raza = raza
-//     this.peso = peso
-//     this.edad = edad
-//   }
+// alert("Bienvenido a Mascota Online.");
 
+// function consulta() {
+//   let nombre = prompt("Cuál es el nombre de tu mascota?");
+//   let raza = prompt("Qué tipo de raza es?");
+//   let peso = prompt("Cuánto pesa?");
+//   let edad = prompt("Cuantos años tiene?");
 // }
+
+// consulta();
+
+// let lavado = "1";
+// let corte = "2";
+// let lavadoYcorte = "3";
+
+// const LAVADO = "550";
+// const CORTE = "750";
+// const LAVADOYCORTE = "1300";
+
+// function service() {
+//   let serviceSeleccionado = prompt(
+//     "Indique que tipo de servicio quiere contratar?\n" +
+//       "1. Lavado\n" +
+//       "2. Corte\n" +
+//       "3. Lavado + Corte\n"
+//   );
+
+//   let serviceContratado = serviceSeleccionado;
+
+//   if (serviceContratado === lavado) {
+//     alert("Usted seleccionó el servicio de Lavado por: $" + LAVADO);
+//   } else if (serviceContratado === corte) {
+//     alert("Usted seleccionó el servicio de Lavado por: $" + LAVADO );
+//   } else if (serviceContratado === lavadoYcorte) {
+//     alert("Usted seleccionó el servicio de Lavado por: $" + LAVADOYCORTE);
+//   } else {
+//     alert("Gracias por su visita");
+//   }
+// }
+
+// service();
+
+// ------------------ BASE DE CANINOS ------------------
 
 alert("Bienvenido a Mascota Online.");
 
-function consulta() {
-  let nombre = prompt("Cuál es el nombre de tu mascota?");
-  let raza = prompt("Qué tipo de raza es?");
-  let peso = prompt("Cuánto pesa?");
-  let edad = prompt("Cuantos años tiene?");
-}
-
-consulta();
-
-let lavado = "1";
-let corte = "2";
-let lavadoYcorte = "3";
-
-const LAVADO = "550";
-const CORTE = "750";
-const LAVADOYCORTE = "1300";
-
-function service() {
-  let serviceSeleccionado = prompt(
-    "Indique que tipo de servicio quiere contratar?\n" +
-      "1. Lavado\n" +
-      "2. Corte\n" +
-      "3. Lavado + Corte\n"
-  );
-
-  let serviceContratado = serviceSeleccionado;
-
-  if (serviceContratado === lavado) {
-    alert("Usted seleccionó el servicio de Lavado por: $" + LAVADO);
-  } else if (serviceContratado === corte) {
-    alert("Usted seleccionó el servicio de Lavado por: $" + LAVADO );
-  } else if (serviceContratado === lavadoYcorte) {
-    alert("Usted seleccionó el servicio de Lavado por: $" + LAVADOYCORTE);
-  } else {
-    alert("Gracias por su visita"); 
+class mascotasClientes {
+  constructor(nombre, raza, peso, edad) {
+    this.nombre = nombre;
+    this.raza = raza;
+    this.peso = peso;
+    this.edad = edad;
   }
 }
 
-service();
+const MASCOTAS = [];
+
+for (let mascota = 0; mascota < 2; mascota++) {
+  const nombre = prompt("Cuál es el nombre de tu mascota?");
+  const raza = prompt("Qué tipo de raza es?");
+  const peso = prompt("Cuánto pesa?");
+  const edad = prompt("Cuantos años tiene?");
+
+  const mascota = new mascotasClientes(nombre, raza, peso, edad);
+  MASCOTAS.push(mascota);
+  console.log(mascota);
+}
+
