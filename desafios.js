@@ -207,6 +207,126 @@
 
 // ------------------ BASE DE CANINOS ------------------
 
+// alert("Bienvenido a Mascota Online.");
+
+// class mascotasClientes {
+//   constructor(nombre, raza, peso, edad) {
+//     this.nombre = nombre;
+//     this.raza = raza;
+//     this.peso = peso;
+//     this.edad = edad;
+//   }
+// }
+
+// const MASCOTAS = [];
+
+// for (let mascota = 0; mascota < 2; mascota++) {
+//   const nombre = prompt("Cuál es el nombre de tu mascota?");
+//   const raza = prompt("Qué tipo de raza es?");
+//   const peso = prompt("Cuánto pesa?");
+//   const edad = prompt("Cuantos años tiene?");
+
+//   const mascota = new mascotasClientes(nombre, raza, peso, edad);
+//   MASCOTAS.push(mascota);
+//   console.log(mascota);
+// }
+
+// ------------------ SIMULADOR INTERACTIVO ------------------
+// Utilizar tres funciones
+// 1. Pedido de datos.
+// 2. Selección de servicio.
+// 3. Selección de horario.
+// 4. Forma de pago.
+
+// Array "Resumen"
+
+const DETALLE = [];
+
+// Función "Pedido de datos"
+
+function consulta() {
+  let nombre = prompt("Cuál es el nombre de tu mascota?");
+  let raza = prompt("Qué tipo de raza es?");
+  let peso = prompt("Cuánto pesa?");
+  let edad = prompt("Cuantos años tiene?");
+
+  DETALLE.push("Nombre de la mascota: " + nombre);
+  DETALLE.push("Tipo de raza: " + raza);
+  DETALLE.push("Su peso: " + peso);
+  DETALLE.push("Su edad " + edad);
+}
+
+// Función "Selección de servicio"
+
+let lavado = "1";
+let corte = "2";
+let lavadoYcorte = "3";
+
+const LAVADO = "550";
+const CORTE = "750";
+const LAVADOYCORTE = "1300";
+
+function service() {
+  let serviceSeleccionado = prompt(
+    "Indique que tipo de servicio quiere contratar?\n" +
+      "1. Lavado\n" +
+      "2. Corte\n" +
+      "3. Lavado + Corte\n"
+  ); 
+  
+  let serviceContratado = serviceSeleccionado;
+
+  DETALLE.push("Tipo de lavado seleccionado " + serviceContratado);
+
+  if (serviceContratado === lavado) {
+    alert("Usted seleccionó el servicio de Lavado por: $" + LAVADO);
+  } else if (serviceContratado === corte) {
+    alert("Usted seleccionó el servicio de Lavado por: $" + LAVADO);
+  } else if (serviceContratado === lavadoYcorte) {
+    alert("Usted seleccionó el servicio de Lavado y Corte por: $" + LAVADOYCORTE);
+  } else {
+    alert("Gracias por su visita");
+  }
+}
+
+// Función "Selección de horario"
+
+let manana = "1";
+let medioDia = "2";
+let tarde = "3";
+
+function horario() {
+  let turno = prompt(
+    "En que turno desea traer a su mascota?\n" +
+      "1. Durante la mañana.\n" +
+      "2. Al medio día.\n" +
+      "3. Durante la tarde."
+  );
+
+  let turnoDefinido = turno;
+
+  DETALLE.push("Tipo de turno seleccionado " + turnoDefinido);
+
+  if (turnoDefinido === manana) {
+    alert("Felicidades, ya tiene un turno reservado para la mañana.");
+  } else if (turnoDefinido === medioDia) {
+    alert("Felicidades, ya tiene un turno reservado para el medio día.");
+  } else if (turnoDefinido === tarde) {
+    alert("Felicidades, ya tiene un turno reservado para la tarde.");
+  }
+}
+
+// Función "Forma de pago"
+
+function formaPago() {
+  let tipoPago = prompt("Cómo va a ser su forma de pago?");
+  
+  DETALLE.push("Forma de pago " + tipoPago);
+}
+
+
+// Función "Consulta completa"
+
 alert("Bienvenido a Mascota Online.");
 
 class mascotasClientes {
@@ -218,16 +338,13 @@ class mascotasClientes {
   }
 }
 
-const MASCOTAS = [];
-
-for (let mascota = 0; mascota < 2; mascota++) {
-  const nombre = prompt("Cuál es el nombre de tu mascota?");
-  const raza = prompt("Qué tipo de raza es?");
-  const peso = prompt("Cuánto pesa?");
-  const edad = prompt("Cuantos años tiene?");
-
-  const mascota = new mascotasClientes(nombre, raza, peso, edad);
-  MASCOTAS.push(mascota);
-  console.log(mascota);
+function resumenService() {
+  consulta();
+  service();
+  horario();
+  formaPago();
 }
 
+resumenService();
+DETALLE.push(resumenService);
+console.log(DETALLE);
