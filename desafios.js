@@ -338,6 +338,7 @@ class mascotasClientes {
   }
 }
 
+
 function resumenService() {
   consulta();
   service();
@@ -345,6 +346,9 @@ function resumenService() {
   formaPago();
 }
 
+// const serviceContratado = new mascotasClientes(nombre, raza, peso, edad);
+
 resumenService();
 DETALLE.push(resumenService);
+DETALLE.sort();
 console.log(DETALLE);
