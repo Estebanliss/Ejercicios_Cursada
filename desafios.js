@@ -238,64 +238,83 @@
 // 3. Selección de horario.
 // 4. Forma de pago.
 
+// Plantillas de Objetos:
+
+class Turno {
+  constructor(mascota, servicio, horario, metodoPago) {
+    this.mascota = mascota;
+    this.servicio = servicio;
+    this.horario = horario;
+    this.metodoPago = metodoPago;
+  }
+}
+
+class Mascota {
+  constructor( nombre, raza, edad, peso) {
+    this.nombre = nombre;
+    this.raza = raza;
+    this.edad = edad;
+    this.peso = peso;
+  }
+}
+
 // Array "Resumen"
 
-const DETALLE = [];
+const TURNOS = [];
 
 // Función "Pedido de datos"
-
-function consulta() {
+function crearMascota() {
   let nombre = prompt("Cuál es el nombre de tu mascota?");
   let raza = prompt("Qué tipo de raza es?");
   let peso = prompt("Cuánto pesa?");
   let edad = prompt("Cuantos años tiene?");
 
-  DETALLE.push("Nombre de la mascota: " + nombre);
-  DETALLE.push("Tipo de raza: " + raza);
-  DETALLE.push("Su peso: " + peso);
-  DETALLE.push("Su edad " + edad);
+  return new Mascota(nombre, raza, peso, edad);
+}
+
+function crearTurno() {
+  return new Turno(crearMascota(), service(), horario(), formaPago());
 }
 
 // Función "Selección de servicio"
-
-let lavado = "1";
-let corte = "2";
-let lavadoYcorte = "3";
-
-const LAVADO = "550";
-const CORTE = "750";
-const LAVADOYCORTE = "1300";
-
 function service() {
+  let lavado = "1";
+  let corte = "2";
+  let lavadoYcorte = "3";
+
+  const LAVADO = "550";
+  const CORTE = "750";
+  const LAVADOYCORTE = "1300";
+
   let serviceSeleccionado = prompt(
     "Indique que tipo de servicio quiere contratar?\n" +
       "1. Lavado\n" +
       "2. Corte\n" +
       "3. Lavado + Corte\n"
-  ); 
-  
-  let serviceContratado = serviceSeleccionado;
+  );
 
-  DETALLE.push("Tipo de lavado seleccionado " + serviceContratado);
+  let serviceContratado = serviceSeleccionado;
 
   if (serviceContratado === lavado) {
     alert("Usted seleccionó el servicio de Lavado por: $" + LAVADO);
   } else if (serviceContratado === corte) {
     alert("Usted seleccionó el servicio de Lavado por: $" + LAVADO);
   } else if (serviceContratado === lavadoYcorte) {
-    alert("Usted seleccionó el servicio de Lavado y Corte por: $" + LAVADOYCORTE);
+    alert(
+      "Usted seleccionó el servicio de Lavado y Corte por: $" + LAVADOYCORTE
+    );
   } else {
     alert("Gracias por su visita");
   }
+  return serviceSeleccionado;
 }
 
 // Función "Selección de horario"
-
-let manana = "1";
-let medioDia = "2";
-let tarde = "3";
-
 function horario() {
+  let manana = "1";
+  let medioDia = "2";
+  let tarde = "3";
+
   let turno = prompt(
     "En que turno desea traer a su mascota?\n" +
       "1. Durante la mañana.\n" +
@@ -305,8 +324,6 @@ function horario() {
 
   let turnoDefinido = turno;
 
-  DETALLE.push("Tipo de turno seleccionado " + turnoDefinido);
-
   if (turnoDefinido === manana) {
     alert("Felicidades, ya tiene un turno reservado para la mañana.");
   } else if (turnoDefinido === medioDia) {
@@ -314,41 +331,31 @@ function horario() {
   } else if (turnoDefinido === tarde) {
     alert("Felicidades, ya tiene un turno reservado para la tarde.");
   }
+
+  return turnoDefinido;
 }
 
 // Función "Forma de pago"
-
 function formaPago() {
   let tipoPago = prompt("Cómo va a ser su forma de pago?");
-  
-  DETALLE.push("Forma de pago " + tipoPago);
+  return tipoPago;
 }
-
 
 // Función "Consulta completa"
 
 alert("Bienvenido a Mascota Online.");
 
-class mascotasClientes {
-  constructor(nombre, raza, peso, edad) {
-    this.nombre = nombre;
-    this.raza = raza;
-    this.peso = peso;
-    this.edad = edad;
+while (true) {
+  var input = prompt(
+    "Selecciones una opción: \n" + " 1. Crear un turno. \n" + " 2. Salir"
+  );
+
+  if (input === "1") {
+    TURNOS.push(crearTurno());
+  } else {
+    break;
   }
 }
 
-
-function resumenService() {
-  consulta();
-  service();
-  horario();
-  formaPago();
-}
-
-// const serviceContratado = new mascotasClientes(nombre, raza, peso, edad);
-
-resumenService();
-DETALLE.push(resumenService);
-DETALLE.sort();
-console.log(DETALLE);
+TURNOS.sort((a, b) => a.horario - b.horario);
+console.table(TURNOS);
